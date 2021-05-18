@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Container from 'react-bootstrap/Container';
+import Boards from './Boards';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <Navbar bg="light" variant="light">
+    <Navbar.Brand href="#home">Shopperspy</Navbar.Brand>
+    <Nav className="mr-auto">
+      <Nav.Link href="#home">Home</Nav.Link>
+      <Nav.Link href="#boards">Boards</Nav.Link>
+      <Nav.Link href="#profile">Profile</Nav.Link>
+    </Nav>
+    <Form inline>
+      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+      <Button variant="outline-info">Search</Button>
+    </Form>
+  </Navbar>
+  <Container>
+        <h3>Your boards</h3>
+    <Boards></Boards>
+  </Container>
+  </div>
   );
 }
 
