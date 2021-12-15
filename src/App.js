@@ -1,30 +1,44 @@
 import "./App.css";
-import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
 import Container from "react-bootstrap/Container";
 import Boards from "./Boards";
+
+const Style = {
+  nav: {
+    "background-color": "#ff4081",
+  },
+  navItem: {
+    color: "white",
+  },
+};
 
 function App() {
   return (
     <div>
-      <Navbar bg="light" variant="light">
-        <Navbar.Brand href="#home">Shopperspy</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#boards">Boards</Nav.Link>
-          <Nav.Link href="#profile">Profile</Nav.Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
+      <Navbar style={Style.nav} className="mb-3">
+        <Container>
+          <Navbar.Brand style={Style.navItem} href="#home">
+            Shopperspy
+          </Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link style={Style.navItem} href="#home">
+              Home
+            </Nav.Link>
+            <Nav.Link style={Style.navItem} href="#boards">
+              Boards
+            </Nav.Link>
+            <Nav.Link style={Style.navItem} href="#profile">
+              Profile
+            </Nav.Link>
+          </Nav>
+        </Container>
       </Navbar>
       <Container>
-        <h3>Your boards</h3>
-        <Boards></Boards>
+        <section>
+          <h3 className="mb-3">Your boards</h3>
+          <Boards />
+        </section>
       </Container>
     </div>
   );

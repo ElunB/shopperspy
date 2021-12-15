@@ -5,6 +5,13 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 //import useFetch from './useFetch';
 
+const Style = {
+  buttonPrimary: {
+    "background-color": "#ff4081",
+    border: "none",
+  },
+};
+
 function Boards() {
   const [boards, setBoards] = useState([]);
   const [products, setProducts] = useState([]);
@@ -49,11 +56,13 @@ function Boards() {
     }
   }
 
-  const listBoards = boards.map((board) => <li>{board}</li>);
+  const listBoards = boards.map((board) => <div>{board}</div>);
 
   return (
     <div>
-      <Button onClick={handleShow}>new board</Button>
+      <Button style={Style.buttonPrimary} onClick={handleShow}>
+        new board
+      </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>New board</Modal.Title>
@@ -68,25 +77,34 @@ function Boards() {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button style={Style.buttonPrimary} onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={addBoard}>
+          <Button style={Style.buttonPrimary} onClick={addBoard}>
             Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
-      <ul>{listBoards}</ul>
-      <Form.Group>
-        <Form.Control
-          type="text"
-          placeholder="enter url"
-          onChange={(e) => setUrl(e.target.value)}
-        />
-      </Form.Group>
-      <Button variant="primary" onClick={addProduct}>
-        Add product
-      </Button>
+      <Form>
+        <Form.Group className="mb-3">
+          <Form.Label>Enter your URL </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="enter url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        </Form.Group>
+        <Button
+          className="mb-3"
+          style={Style.buttonPrimary}
+          type="submit"
+          onClick={addProduct}
+        >
+          Add product
+        </Button>
+      </Form>
+      <h4>{listBoards}</h4>
       <Product products={products}></Product>
     </div>
   );
