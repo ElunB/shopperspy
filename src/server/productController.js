@@ -1,6 +1,6 @@
-const fetch = require("node-fetch");
+import fetch from 'node-fetch';
 
-let productController = {
+export let productController = {
   get: function () {
     return [{ id: 1, name: "dress" }];
   },
@@ -32,4 +32,5 @@ let productController = {
   },
 };
 
-module.exports = productController;
+//module.exports = productController;
+export default productController;

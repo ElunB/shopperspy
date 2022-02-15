@@ -35,9 +35,9 @@ const style = {
 };
 
 function Product(props) {
-  const listProducts = props.products.map((product) => (
-    <li key={product}>{product}</li>
-  ));
+  // const listProducts = props.products.map((product) => (
+  //   <li key={product}>{product}</li>
+  // ));
   return (
     <Card style={style.card}>
       <Card.Img

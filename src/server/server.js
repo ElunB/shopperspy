@@ -1,8 +1,8 @@
 // Bring the express server and create application
-let express = require("express");
+import express from "express";
+import { productController } from "./productController.js"
 let app = express();
 
-let productController = require("./productController");
 
 //use the express Router object
 let router = express.Router();
@@ -11,14 +11,18 @@ let router = express.Router();
 //"If you go here, this functon is executed"
 //All of these functions for a router typically havae a request object, a response object and a next object (req, res, next)
 // next is what we are going to use for middleware error handling
-router.get("/", function (req, res, next) {
+//router.get("/", function (req, res, next) {
+router.get("/", function (req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+  // res.header('Access-Control-Allow-Credentials', 'true');
   //res.send(products);
-  const products = productController.get();
+  // const products = productController.get();
+  console.log("get endpoint");
   res.status(200).json({
     status: 200,
     statusText: "OK",
     message: "All products retrieved",
-    data: products,
+    //data: products,
   });
 });
 
@@ -53,9 +57,9 @@ router.get("/:id", function (req, res, next) {
 // All endpoints goes through /api/...
 app.use("/api", router);
 
-//Create server to listen on port 5000
-var server = app.listen(3001, function () {
-  console.log("Node server is running on http://localhost:3001..");
+//Create server to listen on port 3002
+var server = app.listen(3002, function () {
+  console.log("Node server is running on http://localhost:3002..");
 });
 
-module.exports = router;
+export default router;

@@ -33,16 +33,18 @@ function Boards() {
     handleClose();
   }
 
-  async function addProduct() {
+  const addProduct = async () => {
+    console.log("Add product");
     const product = await fetchProduct();
     setProducts((products) => [...products, product]);
   }
 
-  async function fetchProduct() {
+  const fetchProduct = async () => {
     try {
-      const response = await fetch("http://localhost:3001/", {
+      console.log("Fetch product");
+      const response = await fetch("http://localhost:3002/api/", {
         method: "GET",
-        params: { id: 21264667 },
+        //params: { id: 21264667 },
       });
       if (response.ok) {
         console.log(response);
@@ -98,8 +100,8 @@ function Boards() {
         <Button
           className="mb-3"
           style={Style.buttonPrimary}
-          type="submit"
-          onClick={addProduct}
+          //type="submit"
+          onClick={() => addProduct()}
         >
           Add product
         </Button>
